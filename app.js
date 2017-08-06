@@ -72,7 +72,7 @@ function MenuSearchService($http) { //standard service, pass in basepath
         var foundItems= [];
         allResults.forEach(function(item){
           if(item.description.toLowerCase().includes(searchTerm) && !foundItems.includes(item.description)){
-            foundItems.push(item.description);
+            foundItems.push(item.name + ", " +item.short_name + ", " +item.description);
           }
         })
 
