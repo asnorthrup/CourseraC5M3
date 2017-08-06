@@ -13,17 +13,16 @@
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
     <div id="menuitems" ng-controller='NarrowItDownController as list'>
-      <div class="form-group">
+      <!-- <div class="form-group"> -->
         <input type="text" placeholder="search term" class="form-control" ng-model="searchTerm">
-      </div>
-      <div class="form-group narrow-button">
+      <!-- </div> -->
+      <!-- <div class="form-group narrow-button"> -->
         <button class="btn btn-primary" ng-click="list.getMatches(searchTerm);">Narrow It Down For Me!</button>
-      </div>
+      <!-- </div> -->
 
       <!-- found-items should be implemented as a component (from directive foundItems) -->
       <!-- we've taken properties in the directive and set them equal to things(found is array of found items and removeItem is a function) in the controller list. Here list refers to the NarrowItDownController -->
-      <found-items founditems="list.found" on-remove="list.removeItem(index)">
-        
+      <found-items founditems="list.found" clicked="list.clicked" on-remove="list.removeItem(index)">    
       </found-items>
     </div>
   </div>

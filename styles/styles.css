@@ -1,6 +1,17 @@
 h1 {
   margin-bottom: 30px;
 }
+
+ul{
+  padding-top: 10px;
+  padding-left: 10px;
+  align-content: left;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 input[type="text"] {
   width: 200px;
   float: left;
@@ -50,3 +61,7 @@ input[type="text"] {
     transform: rotate(360deg);
   }
 }
+
+
+
+

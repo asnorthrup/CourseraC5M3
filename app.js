@@ -13,6 +13,7 @@ function FoundItemsDirective() {
     templateUrl: 'menuList.html',
     scope: {
       founditems: '<',
+      clicked: '<',
       onRemove: '&' //reference binding
     },
     controller: NarrowItDownDirectiveController,
@@ -27,7 +28,7 @@ function NarrowItDownDirectiveController() {
   var conItems = this; //since you bound it earlier, items here gets the DDO bound to it. So you'd refer to the name of whatever is here to get to proprs in the DDO
 
   conItems.isEmpty = function () {
-    if(conItems.founditems.length == 0){ //found items was bound to conItems, probably should be same name, but to demonstrate, made them different
+    if(conItems.clicked==true && conItems.founditems.length == 0){ //found items was bound to conItems, probably should be same name, but to demonstrate, made them different
       return true;
     }
     return false;
@@ -39,12 +40,14 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService){
   var menu = this;
   menu.found = [];
+  menu.clicked = false;
 
   //store service response on the controller
   menu.getMatches = function(searchTerm){
+
     MenuSearchService.getMatchedMenuItems(searchTerm).then(function (response) { //resolve the promise
-      menu.found = response; //we expect the response to have data which is a json, which is converted to an array of obj literals automatically
-    //assign that array of obj literals to the menu (this).categories property, which is the as notation
+      menu.found = response; 
+      menu.clicked = true;
     }) //not going to provide another function for error
     .catch(function (error) { //just use a catch all kind of function, just cleaner
       console.log("Something went terribly wrong.");
