@@ -1,0 +1,6 @@
+<!-- items refers to the NarrowItDownDirectiveController, which has a  -->
+<li ng-repeat="item in myItems.founditems">
+  {{ item }}
+  <button ng-click="myItems.onRemove({index: $index})">Remove Item</button>
+</li>
+<div class="error" ng-if="myItems.isEmpty()">Nothing Found!</div>
